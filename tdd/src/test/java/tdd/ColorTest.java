@@ -156,4 +156,76 @@ public class ColorTest
 	{
 		this.color.setRed(300);
 	}
+
+	@Test
+	public void testSetGreen()
+	{
+		this.color.setGreen(145);
+		assertEquals(145, this.color.getGreen());
+		assertEquals(255, this.color.getRed());
+		assertEquals(145, this.color.getBlue());
+		assertEquals("#ff9191", this.color.getHexValue());
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetGreenisNotValidWithNegativeNumber()
+	{
+		this.color.setGreen(-5);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetGreenisNotValidWithHigherNumber()
+	{
+		this.color.setGreen(300);
+	}
+
+	@Test
+	public void testSetBlue()
+	{
+		this.color.setBlue(200);
+		assertEquals(200, this.color.getBlue());
+		assertEquals(255, this.color.getRed());
+		assertEquals(200, this.color.getGreen());
+		assertEquals("#ffc8c8", this.color.getHexValue());
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetBlueisNotValidWithNegativeNumber()
+	{
+		this.color.setBlue(-5);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetBlueisNotValidWithHigherNumber()
+	{
+		this.color.setBlue(300);
+	}
+
+	@Test
+	public void testSetHexValueIsValid()
+	{
+		this.color.setHexValue("#000000");
+		assertEquals("#000000", this.color.getHexValue());
+		assertEquals(0, this.color.getRed());
+		assertEquals(0, this.color.getGreen());
+		assertEquals(0, this.color.getBlue());
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetHexValueIsNotValidFirstChar()
+	{
+		this.color.setHexValue("000000");
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetHexValueIsNotValidBadChar()
+	{
+		this.color.setHexValue("#Z0Z0Z0");
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetHexValueIsNotValidTooLong()
+	{
+		this.color.setHexValue("#00000000");
+	}
 }
