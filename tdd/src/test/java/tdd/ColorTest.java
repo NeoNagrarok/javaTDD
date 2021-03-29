@@ -1,5 +1,7 @@
 package tdd;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +13,7 @@ public class ColorTest
 	@Before
 	public void setUP()
 	{
-		this.color = new Color(122, 122, 122);
+		this.color = new Color(255, 200, 145);
 	}
 
 	@After
@@ -80,4 +82,27 @@ public class ColorTest
 		this.color = new Color("#FFD51AFF");
 	}
 
+	@Test
+	public void testGetRed()
+	{
+		assertEquals(255, this.color.getRed());
+		assertEquals(200, this.color.getGreen());
+		assertEquals(145, this.color.getBlue());
+	}
+
+	@Test
+	public void testGetGreen()
+	{
+		assertEquals(200, this.color.getGreen());
+		assertEquals(255, this.color.getRed());
+		assertEquals(145, this.color.getBlue());
+	}
+
+	@Test
+	public void testGetBlue()
+	{
+		assertEquals(145, this.color.getBlue());
+		assertEquals(255, this.color.getRed());
+		assertEquals(200, this.color.getGreen());
+	}
 }
