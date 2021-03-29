@@ -21,10 +21,39 @@ public class ColorTest
 	}
 
 	@Test(expected=IllegalArgumentException.class)
-	public void firstParamException()
+	public void firstParamExceptionWithNegativeNumber()
 	{
 		this.color = new Color(-5, 0, 0);
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void secondParamExceptionWithNegativeNumber()
+	{
+		this.color = new Color(0, -5, 0);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void thirdParamExceptionWithNegativeNumber()
+	{
+		this.color = new Color(0, 0, -5);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void firstParamExceptionWithHigherNumber()
+	{
+		this.color = new Color(300, 0, 0);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void secondParamExceptionWithHigherNumber()
+	{
+		this.color = new Color(0, 300, 0);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void thirdParamExceptionWithHigherNumber()
+	{
+		this.color = new Color(0, 0, 300);
+	}
 
 }
