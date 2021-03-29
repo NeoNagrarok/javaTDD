@@ -56,4 +56,28 @@ public class ColorTest
 		this.color = new Color(0, 0, 300);
 	}
 
+	@Test
+	public void secondConstructorIsValid()
+	{
+		this.color = new Color("#FFD51A");
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void secondConstructorIsNotValidFirstChar()
+	{
+		this.color = new Color("FFD51A");
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void secondConstructorIsNotValidBadChar()
+	{
+		this.color = new Color("#FFG51A");
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void secondConstructorIsNotValidTooLong()
+	{
+		this.color = new Color("#FFD51AFF");
+	}
+
 }
