@@ -228,4 +228,10 @@ public class ColorTest
 	{
 		this.color.setHexValue("#00000000");
 	}
+
+	@Test
+	public void testToString()
+	{
+		assertEquals("[value=#ffc891, r=255, g=200, b=145]", this.color.toString());
+	}
 }

@@ -100,6 +100,14 @@ public class Color
 		this.hexToRgb();
 	}
 
+	public String toString()
+	{
+		return "[value=" + this.hexValue +
+				", r=" + this.red +
+				", g=" + this.green +
+				", b=" + this.blue + "]";
+	}
+
 	private void hexToRgb()
 	{
 		this.red = Integer.valueOf(this.hexValue.substring(1, 3), 16);
