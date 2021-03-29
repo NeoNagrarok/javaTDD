@@ -8,6 +8,8 @@ public class Color
 	private int green;
 	private int blue;
 
+	private String hexValue;
+
 	public Color(int red, int green, int blue)
 	{
 		if (
@@ -22,14 +24,19 @@ public class Color
 		this.red = red;
 		this.green = green;
 		this.blue = blue;
+		this.hexValue = String.format("#%02x%02x%02x", this.red, this.green, this.blue);
 	}
 
-	public Color(String hexaColor)
+	public Color(String hexValue)
 	{
 		Pattern pattern = Pattern.compile("^#[a-fA-F0-9]{6}$");
-		Matcher matcher = pattern.matcher(hexaColor);
+		Matcher matcher = pattern.matcher(hexValue);
 		if (!matcher.find())
 			throw new IllegalArgumentException();
+		this.hexValue = hexValue;
+		this.red = Integer.valueOf(hexValue.substring(1, 3), 16);
+		this.green = Integer.valueOf(hexValue.substring(3, 5), 16);
+		this.blue = Integer.valueOf(hexValue.substring(5, 7), 16);
 	}
 
 	public int getRed()
@@ -45,5 +52,10 @@ public class Color
 	public int getBlue()
 	{
 		return this.blue;
+	}
+
+	public String getHexValue()
+	{
+		return this.hexValue;
 	}
 }

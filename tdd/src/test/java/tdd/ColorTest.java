@@ -9,11 +9,13 @@ import org.junit.Test;
 public class ColorTest
 {
 	private Color color;
+	private Color hexaColor;
 
 	@Before
 	public void setUP()
 	{
 		this.color = new Color(255, 200, 145);
+		this.hexaColor = new Color("#ffc891");
 	}
 
 	@After
@@ -88,6 +90,10 @@ public class ColorTest
 		assertEquals(255, this.color.getRed());
 		assertEquals(200, this.color.getGreen());
 		assertEquals(145, this.color.getBlue());
+		assertEquals(145, this.hexaColor.getBlue());
+		assertEquals(255, this.hexaColor.getRed());
+		assertEquals(200, this.hexaColor.getGreen());
+		assertEquals("#ffc891", this.hexaColor.getHexValue());
 	}
 
 	@Test
@@ -96,11 +102,33 @@ public class ColorTest
 		assertEquals(200, this.color.getGreen());
 		assertEquals(255, this.color.getRed());
 		assertEquals(145, this.color.getBlue());
+		assertEquals(145, this.hexaColor.getBlue());
+		assertEquals(255, this.hexaColor.getRed());
+		assertEquals(200, this.hexaColor.getGreen());
+		assertEquals("#ffc891", this.hexaColor.getHexValue());
 	}
 
 	@Test
 	public void testGetBlue()
 	{
+		assertEquals(145, this.color.getBlue());
+		assertEquals(255, this.color.getRed());
+		assertEquals(200, this.color.getGreen());
+		assertEquals("#ffc891", this.color.getHexValue());
+		assertEquals(145, this.hexaColor.getBlue());
+		assertEquals(255, this.hexaColor.getRed());
+		assertEquals(200, this.hexaColor.getGreen());
+		assertEquals("#ffc891", this.hexaColor.getHexValue());
+	}
+
+	@Test
+	public void testGetHexValue()
+	{
+		assertEquals("#ffc891", this.hexaColor.getHexValue());
+		assertEquals(145, this.hexaColor.getBlue());
+		assertEquals(255, this.hexaColor.getRed());
+		assertEquals(200, this.hexaColor.getGreen());
+		assertEquals("#ffc891", this.color.getHexValue());
 		assertEquals(145, this.color.getBlue());
 		assertEquals(255, this.color.getRed());
 		assertEquals(200, this.color.getGreen());
