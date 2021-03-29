@@ -4,6 +4,10 @@ import java.util.regex.*;
 
 public class Color
 {
+	private int red;
+	private int green;
+	private int blue;
+
 	public Color(int red, int green, int blue)
 	{
 		if (
@@ -15,6 +19,9 @@ public class Color
 			blue > 255
 		)
 			throw new IllegalArgumentException();
+		this.red = red;
+		this.green = green;
+		this.blue = blue;
 	}
 
 	public Color(String hexaColor)
@@ -25,4 +32,18 @@ public class Color
 			throw new IllegalArgumentException();
 	}
 
+	public int getRed()
+	{
+		return this.red;
+	}
+
+	public int getGreen()
+	{
+		return this.green;
+	}
+
+	public int getBlue()
+	{
+		return this.blue;
+	}
 }
