@@ -22,6 +22,7 @@ public class ColorTest
 	public void clean()
 	{
 		this.color = null;
+		this.hexaColor = null;
 	}
 
 	@Test(expected=IllegalArgumentException.class)
@@ -132,5 +133,27 @@ public class ColorTest
 		assertEquals(145, this.color.getBlue());
 		assertEquals(255, this.color.getRed());
 		assertEquals(200, this.color.getGreen());
+	}
+
+	@Test
+	public void testSetRed()
+	{
+		this.color.setRed(200);
+		assertEquals(200, this.color.getRed());
+		assertEquals(145, this.color.getBlue());
+		assertEquals(200, this.color.getGreen());
+		assertEquals("#c8c891", this.color.getHexValue());
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetRedisNotValidWithNegativeNumber()
+	{
+		this.color.setRed(-5);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testSetRedisNotValidWithHigherNumber()
+	{
+		this.color.setRed(300);
 	}
 }

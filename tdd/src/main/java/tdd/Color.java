@@ -24,7 +24,7 @@ public class Color
 		this.red = red;
 		this.green = green;
 		this.blue = blue;
-		this.hexValue = String.format("#%02x%02x%02x", this.red, this.green, this.blue);
+		this.hexToRgb();
 	}
 
 	public Color(String hexValue)
@@ -34,9 +34,7 @@ public class Color
 		if (!matcher.find())
 			throw new IllegalArgumentException();
 		this.hexValue = hexValue;
-		this.red = Integer.valueOf(hexValue.substring(1, 3), 16);
-		this.green = Integer.valueOf(hexValue.substring(3, 5), 16);
-		this.blue = Integer.valueOf(hexValue.substring(5, 7), 16);
+		this.rbgToHex();
 	}
 
 	public int getRed()
@@ -57,5 +55,28 @@ public class Color
 	public String getHexValue()
 	{
 		return this.hexValue;
+	}
+
+	public void setRed(int red)
+	{
+		if (
+			red < 0 ||
+			red > 255
+		)
+			throw new IllegalArgumentException();
+		this.red = red;
+		this.hexToRgb();
+	}
+
+	private void rbgToHex()
+	{
+		this.red = Integer.valueOf(this.hexValue.substring(1, 3), 16);
+		this.green = Integer.valueOf(this.hexValue.substring(3, 5), 16);
+		this.blue = Integer.valueOf(this.hexValue.substring(5, 7), 16);
+	}
+
+	private void hexToRgb()
+	{
+		this.hexValue = String.format("#%02x%02x%02x", this.red, this.green, this.blue);
 	}
 }
